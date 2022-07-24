@@ -1,9 +1,9 @@
 import { ApolloServer } from "apollo-server";
 
-import typeDefs from "./db/schema";
+import { schema } from "./graphql";
 import { createDB, checkDBConnection } from "./db/db";
 
-const server = new ApolloServer({ typeDefs });
+const server = new ApolloServer({ schema });
 const db = createDB();
 
 if (process.env.NODE_ENV !== "test") {
