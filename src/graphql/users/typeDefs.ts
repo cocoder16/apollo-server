@@ -1,25 +1,33 @@
 import { gql } from "apollo-server";
 
-const typeDefs = gql`
+export default gql`
   type Query {
-    me: User
+    me: User!
   }
 
   type Mutation {
-    signUp(userId: String, password: String, passwordConfirm: String): Response
-  }
-
-  interface Response {
-    success: Boolean!
-    message: String!
+    signUp(
+      userId: String!
+      password: String!
+      passwordConfirm: String!
+      name: String!
+    ): SignUpResponse!
   }
 
   type User {
     id: ID!
-    userID: String!
+    userId: String!
     name: String!
     level: Int!
   }
-`;
 
-export default typeDefs;
+  interface MutationResponse {
+    success: Boolean!
+    message: String!
+  }
+
+  type SignUpResponse implements MutationResponse {
+    success: Boolean!
+    message: String!
+  }
+`;
