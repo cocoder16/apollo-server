@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server";
 
-import { schema } from "./graphql";
-import { createDB, checkDBConnection } from "./db/db";
+import { schema } from "src/graphql";
+import { createDB, checkDBConnection } from "src/db/db";
 
 const server = new ApolloServer({ schema });
 const db = createDB();
